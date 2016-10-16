@@ -100,16 +100,18 @@
     {
       "name": "PROGRAMMING",
       "skillsets": [
-        "Ruby",
-        "C",
-        "HTML & CSS"
+        "- Ruby",
+        "- Rails",
+        "- Sinatra",
+        "- C",
+        "- HTML & CSS"
       ]
     },
     {
       "name": "METHODOLOGIES",
       "skillsets": [
-        "Object oriented programming",
-        "TDD - Test Driven Development"
+        "- Object oriented programming",
+        "- Test Driven Development"
       ]
     }
   ],
