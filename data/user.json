@@ -1,0 +1,138 @@
+{
+  "head": {
+    "title": "Rajarshi Sen's Resume"
+  },
+  "basics": {
+    "name": "RAJARSHI SEN",
+    "email": "rsen90@gmail.com",
+    "website": "",
+    "phone": "+91-8981390455",
+    "description": "I’m a <span class='role-label'> ruby learner </span> with a carving to solve problems that are fundamental to everyone! I believe in coding for a cause. I code in ruby, and now plunging myself into the world of JavaScript, with finger's crossed and hoping to someday make a difference with my ripples."
+  },
+  "education": [
+    {
+      "year": [
+        "AUG 2012",
+        "MAY 2016"
+      ],
+      "school": "Techno India, WBUT",
+      "location": "| Kolkata, INDIA",
+      "degree": "B.Tech in Food Technology"
+    }
+  ],
+
+  "projects": [
+    {
+      "name": "Ruspy",
+      "tech": "Ruby",
+      "description": "A Lisp interpreter in Ruby",
+      "source": "https://github.com/deoxilix/ruspy"
+    },
+    {
+      "name": "Pinterest",
+      "tech": "RoR",
+      "description": "A pinterest clone in Rails",
+      "source": "https://github.com/deoxilix/pinterest",
+      "url": "https://xilixpin.herokuapp.com/"
+    },
+    {
+      "name": "Instagram",
+      "tech": "RoR",
+      "description": "An instagram clone attempt in Rails",
+      "source": "https://github.com/deoxilix/instagram",
+      "url": "https://instaxilix.herokuapp.com/"
+    }
+    
+  ],
+
+  "internship": [
+    {
+      "year": [
+        "AUG 2016",
+        "OCT 2016"
+      ],
+      "company": "Geekskool",
+      "location": "| Bangalore, INDIA",
+      "role": "Ruby on Rails trainee",
+      "description": "Developed a opensource Ruby Interpreter for lisp. Worked on a Polling App in RoR."
+    },
+    {
+      "year": [
+        "JULY 2015",
+        "AUG 2015"
+      ],
+      "company": "Coca-Cola",
+      "location": "| Jalpaiguri, INDIA",
+      "role": "Quality Analyst",
+      "description": "Quality Analysis: CSD Beverage: Production scale"
+    },
+    {
+      "year": [
+        "MAY 2014",
+        "JUNE 2014"
+      ],
+      "company": "Parle Products",
+      "location": "| Kolkata, INDIA",
+      "role": "Quality Analyst: Biscuits",
+      "description": "Assuaring Quality of RMPM"
+    }
+  ],
+  "leadership": [
+    {
+      "year": [
+        "FEB 2014",
+        "FEB 2016"
+      ],
+      "name": "The Blue Blur",
+      "role": "Co-Founder & Photographer",
+      "description": "Photographer, lead of: design & Post Production in Photoshop."
+    },
+    {
+      "year": [
+        "AUG 2013",
+        "MAY 2016"
+      ],
+      "name": "GEEKONIX SCIENCE CLUB",
+      "role": "Organising Committee"
+    }
+  ],
+  "skills": [
+    {
+      "name": "PROGRAMMING",
+      "skillsets": [
+        "Ruby",
+        "C",
+        "HTML & CSS"
+      ]
+    },
+    {
+      "name": "METHODOLOGIES",
+      "skillsets": [
+        "Object oriented programming",
+        "TDD - Test Driven Development"
+      ]
+    }
+  ],
+  "socialprofiles": [
+    {
+      "name": "github",
+      "url": "https://github.com/deoxilix",
+      "icon": "/images/github.png"
+    },
+    {
+      "name": "facebook",
+      "url": "https://fb.me/rajarshi.deoxilix",
+      "icon": "/images/facebook.png"
+    },
+    {
+      "name": "linkedin",
+      "url": "github.com/deoxilix",
+      "icon": "/images/linkedin.png"
+    },
+    {
+      "name": "instagram",
+      "url": "instagram.com/deoxilix",
+      "icon": "/images/instagram.png"
+    }
+  ]
+}

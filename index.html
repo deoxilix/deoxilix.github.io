@@ -1,0 +1,239 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Rajarshi Sen's Resume</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="prefetch" href="bower_components/angular/angular.min.js" type="script">
+  <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+  <link rel="stylesheet" media="all" href="styles/f9faa743.main.css">
+  <link rel="stylesheet" media="print" href="styles/f9faa743.main.css">
+  <link href="https://fonts.googleapis.com/css?family=Droid+Sans|Inconsolata|Lato" rel="stylesheet">
+  <script src="scripts/vendor/7d72bbd1.modernizr.js"></script>
+</head>
+
+<body ng-app="resumeApp">
+  <div class="container resume-container" ng-controller="resumeController">
+    <div class="row resume_container">
+      <section class="col-md-6 resume-primary">
+          <div class="left-col row">
+            <div class="meta_primary col-md-12">
+              <label class="user_name">
+                {{data.basics.name}}
+              </label>
+              <div class="row">
+                  <div class="col-md-1" ng-repeat="profile in data.socialprofiles">
+                    <a href="{{profile.url}}" target="_blank"><img src="{{profile.icon}}" class="socio-icon" alt="instagram"></a>
+                  </div>
+              </div>
+              <ul class="user_metadata">
+                <li class="user_description">
+                  <div ng-bind-html="description"></div>
+                </li>
+                <li class="user_website">
+                  {{data.basics.website}}
+                </li>
+                <li class="user_email">
+                  {{data.basics.email}}
+                </li>
+                <li class="user_phone">
+                  {{data.basics.phone}}
+                </li>
+              </ul>
+            </div>
+            <section class="col-md-12 skills secondary">
+                <h2 class="bold blue">SKILLS</h2>
+                <div class="row">
+                  <div class="col-md-6" ng-repeat="skill in data.skills">
+                    <h3 class="light-blue">
+                      {{skill.name}}
+                    </h3>
+                    <ul>
+                      <li ng-repeat="skillset in skill.skillsets">{{skillset}}</li>
+                    </ul>
+                  </div>
+                </div>
+              </section>
+          </div>
+      </section>
+
+      <section class="col-md-6 resume-secondary">
+          <div>
+            <div class="row header">
+              <div class="col-md-2"></div>
+              <div class="col-md-10">
+                <h3 class="blue">
+                  EDUCATION
+                </h3>
+              </div>
+            </div>
+
+            <div class="row ed" ng-repeat="item in data.education">
+              <div class="col-md-2 year_range">
+                <div class="ed-meta" ng-repeat="date in item.year">
+                  <div class="row">
+                    <div class="col-md-12 padding-5">
+                      {{date}}
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-10">
+                <div class="ed-details">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="row unit">
+                        <div class="left unit-name">{{item.school}}</div>
+                        <div class="left unit-location">
+                          {{item.location}}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row meta">
+                    {{item.degree}}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row header experience">
+              <div class="col-md-2"></div>
+              <div class="col-md-10">
+                <h3 class="blue">
+                  PROJECTS
+                </h3>
+              </div>
+            </div>
+
+            <div class="experience-meta row" ng-repeat="item in data.projects">
+              <div class="col-md-2 year_range">
+                <div class="ed-meta">
+                  <div class="row">
+                    <div class="col-md-12 padding-5">
+                      {{item.name}}
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-12 padding-5 bold">
+                      ({{item.tech}})
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-10">
+                <div class="experience-details">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="row unit">
+                        <div class="left unit-name"> {{item.description}} </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row meta">
+                    {{ item.source }}
+                  </div>
+                  <div class="row description">
+                    <a href="{{item.url}}">{{item.url}}</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            
+            <div class="row header experience">
+              <div class="col-md-2"></div>
+              <div class="col-md-10">
+                <h3 class="blue">
+                  INTERNSHIPS
+                </h3>
+              </div>
+            </div>
+
+            <div class="experience-meta row" ng-repeat="item in data.internship">
+              <div class="col-md-2 year_range">
+                <div class="ed-meta">
+                  <div class="row" ng-repeat="date in item.year">
+                    <div class="col-md-12 padding-5">
+                      {{date}}
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-10">
+                <div class="experience-details">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="row unit">
+                        <div class="left unit-name"> {{item.company}} </div>
+                        <div class="left unit-location">
+                          {{ item.location }}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row meta">
+                    {{ item.role }}
+                  </div>
+                  <div class="row description">
+                    {{ item.description }}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row header">
+              <div class="col-md-2"></div>
+              <div class="col-md-10">
+                <h3 class="blue">
+                  LEADERSHIPS
+                </h3>
+              </div>
+            </div>
+
+            <div class="leadership-meta row" ng-repeat="item in data.leadership">
+              <div class="col-md-2 year_range">
+                <div class="ed-meta" ng-repeat="date in item.year">
+                  <div class="row">
+                    <div class="col-md-12 padding-5">
+                      {{date}}
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-10">
+                <div class="experience-details">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="row unit">
+                        <div class="left unit-name"> {{item.name}} </div>
+                        <div class="left unit-location">
+                          {{ item.location }}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row description">
+                    {{ item.role }}
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+
+          </div>
+      </section>
+    </div>
+  </div>
+  <script src="scripts/0423b305.main.js"></script>
+</body>
+
+</html>
