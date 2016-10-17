@@ -26,7 +26,8 @@
       "name": "Ruspy",
       "tech": "Ruby",
       "description": "A Lisp interpreter in Ruby",
-      "source": "https://github.com/deoxilix/ruspy"
+      "source": "https://github.com/deoxilix/ruspy",
+      "url": ""
     },
     {
       "name": "Pinterest",
@@ -80,20 +81,20 @@
   "leadership": [
     {
       "year": [
+        "AUG 2013",
+        "MAY 2016"
+      ],
+      "name": "GEEKONIX SCIENCE CLUB",
+      "role": "Organising Committee"
+    },
+    {
+      "year": [
         "FEB 2014",
         "FEB 2016"
       ],
       "name": "The Blue Blur",
       "role": "Co-Founder & Photographer",
       "description": "Photographer, lead of: design & Post Production in Photoshop."
-    },
-    {
-      "year": [
-        "AUG 2013",
-        "MAY 2016"
-      ],
-      "name": "GEEKONIX SCIENCE CLUB",
-      "role": "Organising Committee"
     }
   ],
   "skills": [

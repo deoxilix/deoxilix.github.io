@@ -139,10 +139,10 @@
                     </div>
                   </div>
                   <div class="row meta">
-                    {{ item.source }}
+                    source - <a href="{{ item.source }}">{{ item.source }}</a>
                   </div>
                   <div class="row description">
-                    <a href="{{item.url}}">{{item.url}}</a>
+                    <span>{{ item.url !== "" ? "Link -" : ''}} </span><a href="{{item.url}}" target="_blank">{{item.url}}</a>
                   </div>
                 </div>
               </div>
