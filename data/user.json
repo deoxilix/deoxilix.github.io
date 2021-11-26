@@ -7,8 +7,16 @@
     "email": "rsen90@gmail.com",
     "website": "",
     "phone": "+91-8981390455",
-    "description": "I’m a <span class='role-label'> ruby learner </span> with a craving to solve problems that are fundamental to everyone! I believe in coding for a cause. I code in ruby, and now am plunging myself into the world of JavaScript, with finger's crossed I hope to make a difference with my ripples."
+    "description": "I’m a Clojure learner with a craving to solve problems that are fundamental to everyone! I believe in coding for a cause. I code in Clojure, Javascript, Ruby & hope to make a difference with the work that I do. I love working with new technology and am glad to pursue this as my profession! <br/>Well, of course, I'm also an active Photographer (portrait, landscapes and abstract), graphic designer, love travelling, an occasional family chef, an avid participant in fine dining (a certified food technologist). I've recently been very excited to do some biking (be happy to go on rides near Bangalore). I love to be around people with an open mind, who inspire others to follow their heart!"
   },
+  "experience": [
+    {
+      "year": [
+        "DEC 2016",
+        "PRESENT"
+      ]
+    }
+  ],
   "education": [
     {
       "year": [
@@ -20,7 +28,6 @@
       "degree": "B.Tech in Food Technology"
     }
   ],
-
   "projects": [
     {
       "name": "Ruspy",
@@ -43,9 +50,7 @@
       "source": "https://github.com/deoxilix/instagram",
       "url": "https://instaxilix.herokuapp.com/"
     }
-    
   ],
-
   "internship": [
     {
       "year": [
@@ -66,16 +71,6 @@
       "location": "| Jalpaiguri, INDIA",
       "role": "Quality Analyst",
       "description": "Quality Analysis: CSD Beverage: Production scale"
-    },
-    {
-      "year": [
-        "MAY 2014",
-        "JUNE 2014"
-      ],
-      "company": "Parle Products",
-      "location": "| Kolkata, INDIA",
-      "role": "Quality Analyst: Biscuits",
-      "description": "Assuaring Quality of RMPM"
     }
   ],
   "leadership": [
@@ -101,18 +96,40 @@
     {
       "name": "PROGRAMMING",
       "skillsets": [
+        "- Clojure",
+        "- Javascript",
+        "- TypeScript",
         "- Ruby",
+        "- PostgreSQL",
         "- Rails",
         "- Sinatra",
-        "- C",
+        "- C programming",
         "- HTML & CSS"
       ]
     },
     {
-      "name": "METHODOLOGIES",
+      "name": "Technologies",
       "skillsets": [
-        "- Object oriented programming",
-        "- Test Driven Development"
+        "- NodeJS",
+        "- ReactJS",
+        "- ReduxJS",
+        "- ElasticSearch",
+        "- docker",
+        "- Serverless | AWS Lambda",
+        "- Queueing | SQS, SNS",
+        "- OAuth",
+        "- Ruby On Rails",
+        "- Microservices"
+      ]
+    },
+    {
+      "name": "Utilities",
+      "skillsets": [
+        "- Git",
+        "- Emacs",
+        "- IntelliJ",
+        "- Adobe Photoshop",
+        "- Adobe Lightroom"
       ]
     }
   ],

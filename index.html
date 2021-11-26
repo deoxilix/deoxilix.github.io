@@ -67,6 +67,46 @@
 
       <section class="col-md-6 resume-secondary">
           <div>
+            <div class="row header experience">
+              <div class="col-md-2"></div>
+              <div class="col-md-10">
+                <h3 class="blue">
+                  EXPERIENCE
+                </h3>
+              </div>
+            </div>
+
+            <div class="experience-meta row" ng-repeat="item in data.projects">
+              <div class="col-md-2 year_range">
+                <div class="ed-meta">
+                  <div class="ed-meta" ng-repeat="date in item.year">
+                    <div class="row">
+                      <div class="col-md-12 padding-5">
+                        {{date}}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-10">
+                <div class="experience-details">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="row unit">
+                        <div class="left unit-name"> {{item.description}} </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row meta">
+                    source - <a href="{{ item.source }}">{{ item.source }}</a>
+                  </div>
+                  <div class="row description">
+                    <span>{{ item.url !== "" ? "Link -" : ''}} </span><a href="{{item.url}}" target="_blank">{{item.url}}</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
             <div class="row header">
               <div class="col-md-2"></div>
               <div class="col-md-10">
