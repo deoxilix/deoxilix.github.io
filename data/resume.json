@@ -1,0 +1,158 @@
+{
+  "basics": {
+    "name": "Rajarshi Sen",
+    "description": "I'm a passionate software engineer with a strong foundation in backend systems and a growing interest in Machine Learning. I'm currently pursuing my Masters in Computer Science, focusing on AI and ML. I enjoy building robust and scalable solutions, and I'm always looking for new challenges. In my free time, I'm an enthusiastic photographer.",
+    "email": "senra@iastate.edu",
+    "phone": "(628) 315-9743",
+    "location": "Ames, Iowa",
+    "website": "https://github.com/deoxilix",
+    "social": [
+      {
+        "name": "github",
+        "url": "https://github.com/deoxilix"
+      },
+      {
+        "name": "linkedin",
+        "url": "https://linkedin.com/in/rajarshisendeoxilix"
+      },
+      {
+        "name": "instagram",
+        "url": "https://www.instagram.com/deoxilix"
+      }
+    ]
+  },
+  "education": [
+    {
+      "institution": "Iowa State University",
+      "area": "Computer Science",
+      "studyType": "Masters",
+      "gpa": "3.92",
+      "startDate": "Aug 2027",
+      "endDate": "Present",
+      "location": "Ames, IA",
+      "courses": [
+        "Algorithmic Foundation",
+        "Principles of Artificial Intelligence",
+        "Principles and Practice of Compiling",
+        "Introduction to Machine Learning",
+        "Statistical Bioinformatics",
+        "Machine Learning"
+      ]
+    },
+    {
+      "institution": "Techno India, WBUT",
+      "area": "Food Technology",
+      "studyType": "B.Tech",
+      "startDate": "AUG 2012",
+      "endDate": "MAY 2016",
+      "location": "Kolkata, INDIA"
+    }
+  ],
+  "work": [
+    {
+      "company": "Teamohana Inc.",
+      "position": "Sr. Software Engineer, Founding team",
+      "location": "San Francisco",
+      "remote": true,
+      "startDate": "Jan 2022",
+      "endDate": "May 2025",
+      "summary": "HRIS & ATS Aggregation Platform",
+      "highlights": [
+        "Built and optimized the employee data synchronization pipeline, for seamless on boarding and regular data aggregation, from HRIS, ATS & OAuth systems providers.",
+        "Implemented attribute-based access control (ABAC) to enhance data privacy and ensure secure and scalable authorization at user and role levels.",
+        "Built user-management and role & user level access control configuration UI, in Clojurescript, and ReactJs."
+      ]
+    },
+    {
+      "company": "Quintype Technologies, India Pvt. Ltd.",
+      "position": "Software Engineer",
+      "location": "Bangalore, India",
+      "startDate": "Jan 2017",
+      "endDate": "Nov 2021",
+      "summary": "As part of the services team: Developed a market research module for BloombergQuint (client), a leading financial news platform, which was later acquired by NDTV India. As a part of the platform team, we built all backend services in Clojure and the UI in Typescript and ReactJs. I worked on and managed multiple microservices, like: Bold: CMS, rich text news editor, content management system for digital news publishers; Sketches: public content delivery API & with dynamic caching; Mafia: RSS-based, content syndication engine; Quest: Elasticsearch-based search engine; Bridgekeeper: Authentication service.",
+      "highlights": [
+        "I handled multiple data migrations to onboard large customers, optimizing processes to transfer terabytes of sensitive data efficiently, and resolving bottlenecks to streamline read-write latencies in our existing systems.",
+        "Contributed to rebuilding 'Bold' the CMS platform (news publishing editor) frontend, using Typescript, ReactJs, and NodeJs.",
+        "Developed a self-scaling, bulk image import service using AWS Lambda, for on-ground photo journalists.",
+        "Led a team to design and implement our in-house Authentication service from scratch, along with a custom SSO implementation, for multi-domain customers. Using NodeJs, JWT, OAuth, PostgreSQL and a Redis Cache. Eventually serving a billion authentications and auth-verifications per month.",
+        "Recognized as the youngest engineer trusted with on-call duties & commended for mitigating critical production issues.",
+        "Earned early leadership opportunities as the youngest team lead, receiving appreciation for guiding and supporting peers."
+      ],
+      "achievements": [
+        "Recognized as the youngest engineer trusted with on-call duties & commended for mitigating critical production issues.",
+        "Earned early leadership opportunities as the youngest team lead, receiving appreciation for guiding and supporting peers."
+      ]
+    }
+  ],
+  "internships": [
+    {
+      "company": "Geekskool",
+      "location": "Bangalore, India",
+      "role": "Software Engineer Trainee",
+      "startDate": "AUG 2016",
+      "endDate": "OCT 2016",
+      "description": "Developed a opensource Ruby Interpreter for lisp. Worked on a Polling App in RoR."
+    },
+    {
+      "company": "Coca-Cola",
+      "location": "Jalpaiguri, India",
+      "role": "Quality Analyst",
+      "startDate": "JULY 2015",
+      "endDate": "AUG 2015",
+      "description": "Quality Analysis: CSD Beverage: Production scale"
+    },
+    {
+      "company": "Parle Products",
+      "location": "Kolkata, India",
+      "role": "Quality Analyst",
+      "startDate": "MAY 2014",
+      "endDate": "JUNE 2014",
+      "description": "Assuaring Quality of RMPM"
+    }
+  ],
+  "projects": [
+    {
+      "name": "Build a C Compiler",
+      "summary": "Implementing lexical analysis, parsing, semantic checks, and code generation in Python with modular, testable components."
+    },
+    {
+      "name": "Heuristic Search Algorithm for CRISPR guide RNA Safety Analysis",
+      "summary": "Implementing a heuristic search algorithm (A*) in Python to predict and rank potential CRISPR-Cas9 off-target sites in genes by calculating Hamming distance, addressing a key safety challenge for therapeutic gene editing."
+    },
+    {
+      "name": "Lisp interpreter in Ruby",
+      "summary": "Developed an interpreter, parser, and code generation for Lisp in Ruby.",
+      "source": "https://github.com/deoxilix/ruspy"
+    }
+  ],
+  "skills": {
+    "languages": ["Python", "Clojure", "Javascript", "Typescript", "C", "SQL", "Ruby"],
+    "frameworks": ["ReactJS", "NodeJS", "Ruby on Rails"],
+    "ml_ai": ["PyTorch", "NumPy", "Pandas", "Scikit-learn"],
+    "tools": ["Docker", "Kubernetes", "Git", "AWS", "PostgreSQL", "Redis", "Elastic Search"],
+    "methodologies": ["Object oriented programming", "Test Driven Development", "Agile"]
+  },
+  "leadership": [
+    {
+      "name": "Quintype Technologies",
+      "role": "Team Lead, Authentication Service (Bridgekeeper)",
+      "startDate": "OCT 2020",
+      "endDate": "Nov 2021",
+      "description": "Led a team to design and implement our in-house Authentication service from scratch, along with a custom SSO implementation, for multi-domain customers."
+    },
+    {
+      "name": "Geekonix Science Fest & Hackathon",
+      "role": "Organising Committee: Head of Photography events & Hackathon coordinator",
+      "startDate": "AUG 2013",
+      "endDate": "MAY 2016"
+    },
+    {
+      "name": "The Blue Blur",
+      "role": "Co-Founder & Photographer",
+      "description": "Photographer, lead of design & post production.",
+      "startDate": "FEB 2014",
+      "endDate": "FEB 2016"
+    }
+  ],
+  "internshipAvailability": "Available from May 18, 2026, to August 21, 2026"
+}

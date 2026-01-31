@@ -1,0 +1,83 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-lato), sans-serif;
+}
+
+/* Animated name - breathing blue effect */
+@keyframes breathe {
+  0%, 100% {
+    color: #428bca;
+  }
+  50% {
+    color: #171717;
+  }
+}
+
+.animate-name {
+  color: #428bca;
+  animation: breathe 6s ease-in-out infinite;
+}
+
+/* Social icon brand colors */
+.social-github:hover {
+  color: #333333;
+}
+
+.social-linkedin:hover {
+  color: #0077B5;
+}
+
+.social-facebook:hover {
+  color: #1877F2;
+}
+
+.social-instagram:hover {
+  color: #E4405F;
+}
+
+/* Contact hover effects */
+.contact-email:hover {
+  color: #428bca;
+}
+
+.contact-phone:hover {
+  color: #34C759;
+}
+
+/* Copy icon visibility */
+.copy-icon {
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.contact-item:hover .copy-icon {
+  opacity: 1;
+}
+
+/* Mobile: persistent colors and visible copy icons */
+@media (max-width: 767px) {
+  .contact-email {
+    color: #428bca;
+  }
+  
+  .contact-phone {
+    color: #34C759;
+  }
+  
+  .copy-icon {
+    opacity: 1;
+  }
+}
