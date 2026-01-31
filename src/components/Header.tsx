@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import { FaGithub, FaLinkedin, FaFacebook } from 'react-icons/fa';
-import { FiInstagram, FiCopy } from 'react-icons/fi';
+import { FiInstagram, FiCopy, FiDownload } from 'react-icons/fi';
 import { Basics } from '../types';
 
 const socialIcons = {
@@ -35,14 +35,24 @@ const Header = ({ basics }: { basics: Basics }) => {
   
   return (
     <header className="flex flex-col mb-8">
-      <div className="w-[120px] h-[120px] rounded-xl overflow-hidden mb-4">
-        <Image
-          src="/photo-chitown.jpeg"
-          alt={basics.name}
-          width={120}
-          height={120}
-          className="w-full h-full object-cover object-center"
-        />
+      <div className="relative w-[120px] h-[120px] mb-4">
+        <a
+          href="/Rajarshi-Sen-Resume-Jan-2026-int.pdf"
+          download
+          className="absolute -top-2 -left-2 z-10 bg-white rounded-full p-1.5 shadow-md text-zinc-600 hover:text-zinc-900 hover:scale-110 transition-all duration-200"
+          title="Download Resume PDF"
+        >
+          <FiDownload className="text-lg" />
+        </a>
+        <div className="w-full h-full rounded-xl overflow-hidden">
+          <Image
+            src="/photo-chitown.jpeg"
+            alt={basics.name}
+            width={120}
+            height={120}
+            className="w-full h-full object-cover object-center"
+          />
+        </div>
       </div>
       <h1 className="text-5xl font-jaapokki font-bold leading-tight animate-name">
         <span className="md:inline block">{nameParts[0]}</span>
