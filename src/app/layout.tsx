@@ -37,8 +37,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${jaapokki.variable} ${lato.variable} ${garamond.variable}`}>
-      <body className="bg-zinc-50 font-lato">{children}</body>
+    <html lang="en" className={`${jaapokki.variable} ${lato.variable} ${garamond.variable}`} suppressHydrationWarning>
+      <body className="bg-zinc-50 dark:bg-zinc-900 font-lato transition-colors duration-300">{children}</body>
     </html>
   );
 }
