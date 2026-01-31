@@ -69,16 +69,20 @@
       "location": "Bangalore, India",
       "startDate": "Jan 2017",
       "endDate": "Nov 2021",
-      "summary": "As part of the services team: Developed a market research module for BloombergQuint (client), a leading financial news platform, which was later acquired by NDTV India. As a part of the platform team, we built all backend services in Clojure and the UI in Typescript and ReactJs. I worked on and managed multiple microservices, like: Bold: CMS, rich text news editor, content management system for digital news publishers; Sketches: public content delivery API & with dynamic caching; Mafia: RSS-based, content syndication engine; Quest: Elasticsearch-based search engine; Bridgekeeper: Authentication service.",
+      "summary": "",
       "highlights": [
+        "As part of the services team: Developed a market research module for BloombergQuint (client), a leading financial news platform, which was later acquired by NDTV India.",
+        "As a part of the platform team, we built all backend services in Clojure and the UI in Typescript and ReactJs. I worked on and managed multiple microservices, like:",
+        "Bold: CMS, rich text news editor, content management system for digital news publishers",
+        "Sketches: public content delivery API & with dynamic caching",
+        "Mafia: RSS-based, content syndication engine",
+        "Quest: Elasticsearch-based search engine",
+        "Bridgekeeper: Authentication service",
         "I handled multiple data migrations to onboard large customers, optimizing processes to transfer terabytes of sensitive data efficiently, and resolving bottlenecks to streamline read-write latencies in our existing systems.",
         "Contributed to rebuilding 'Bold' the CMS platform (news publishing editor) frontend, using Typescript, ReactJs, and NodeJs.",
         "Developed a self-scaling, bulk image import service using AWS Lambda, for on-ground photo journalists.",
         "Led a team to design and implement our in-house Authentication service from scratch, along with a custom SSO implementation, for multi-domain customers. Using NodeJs, JWT, OAuth, PostgreSQL and a Redis Cache. Eventually serving a billion authentications and auth-verifications per month.",
-        "Recognized as the youngest engineer trusted with on-call duties & commended for mitigating critical production issues.",
-        "Earned early leadership opportunities as the youngest team lead, receiving appreciation for guiding and supporting peers."
-      ],
-      "achievements": [
+        "Achievements:",
         "Recognized as the youngest engineer trusted with on-call duties & commended for mitigating critical production issues.",
         "Earned early leadership opportunities as the youngest team lead, receiving appreciation for guiding and supporting peers."
       ]
