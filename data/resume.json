@@ -129,6 +129,11 @@
       "source": "https://github.com/deoxilix/ruspy"
     }
   ],
+  "sections": {
+    "internships": {
+      "enabled": false
+    }
+  },
   "skills": {
     "languages": ["Python", "Clojure", "Javascript", "Typescript", "C", "SQL", "Ruby"],
     "frameworks": ["ReactJS", "NodeJS", "Ruby on Rails"],

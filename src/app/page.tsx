@@ -17,7 +17,7 @@ export default function Home() {
         <Work work={resume.work} />
         <Skills skills={resume.skills} />
         <Projects projects={resume.projects} />
-        <Internships internships={resume.internships} />
+        {resume.sections?.internships?.enabled && <Internships internships={resume.internships} />}
         <Leadership leadership={resume.leadership} />
       </div>
       
@@ -31,7 +31,7 @@ export default function Home() {
           <Education education={resume.education} />
           <Work work={resume.work} />
           <Projects projects={resume.projects} />
-          <Internships internships={resume.internships} />
+          {resume.sections?.internships?.enabled && <Internships internships={resume.internships} />}
           <Leadership leadership={resume.leadership} />
         </main>
       </div>
