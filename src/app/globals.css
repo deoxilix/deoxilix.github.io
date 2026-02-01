@@ -52,11 +52,11 @@ body {
 
 .animate-name {
   color: #428bca;
-  animation: breathe 6s ease-in-out infinite;
+  animation: breathe 3s ease-in-out infinite;
 }
 
 .dark .animate-name {
-  animation: breathe-dark 6s ease-in-out infinite;
+  animation: breathe-dark 3s ease-in-out infinite;
 }
 
 /* Social icon brand colors */
@@ -77,11 +77,11 @@ body {
 }
 
 /* Contact hover effects */
-.contact-email:hover {
+.contact-item:hover .contact-email {
   color: #428bca;
 }
 
-.contact-phone:hover {
+.contact-item:hover .contact-phone {
   color: #34C759;
 }
 
@@ -100,11 +100,11 @@ body {
   .contact-email {
     color: #428bca;
   }
-  
+
   .contact-phone {
     color: #34C759;
   }
-  
+
   .copy-icon {
     opacity: 1;
   }

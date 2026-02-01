@@ -20,6 +20,7 @@ const Header = ({ basics }: { basics: Basics }) => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [darkMode, setDarkMode] = useState(false);
   const [shareState, setShareState] = useState<'idle' | 'clipboard' | 'check'>('idle');
+  const [githubHover, setGithubHover] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
@@ -146,7 +147,7 @@ const Header = ({ basics }: { basics: Basics }) => {
       </div>
     </>
   );
-  
+
   return (
     <>
       {/* Mobile: Sticky Hamburger Menu - top right */}
@@ -177,15 +178,45 @@ const Header = ({ basics }: { basics: Basics }) => {
         <span className="hidden md:inline"> </span>
         <span className="md:inline block">{nameParts.slice(1).join(' ')}</span>
       </h1>
-      <div className="flex space-x-4 mt-4">
+      <div className="flex space-x-4 mt-4 min-h-[32px]">
         {basics.social.map(profile => {
           const social = socialIcons[profile.name as keyof typeof socialIcons];
+
+          // Custom GitHub icon with animated GIF on hover
+          if (profile.name === 'github') {
+            return (
+              <a
+                key={profile.name}
+                href={profile.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-zinc-600 text-2xl transition-all duration-200 social-github inline-block relative"
+                style={{ transform: githubHover ? 'translateY(-8px) scale(1.1)' : 'none' }}
+                onMouseEnter={() => setGithubHover(true)}
+                onMouseLeave={() => setGithubHover(false)}
+              >
+                {githubHover ? (
+                  <Image
+                    src="/GitHub-logo.gif"
+                    alt="GitHub"
+                    width={24}
+                    height={24}
+                    className="inline-block"
+                    unoptimized
+                  />
+                ) : (
+                  <FaGithub />
+                )}
+              </a>
+            );
+          }
+
           return (
-            <a 
-              key={profile.name} 
-              href={profile.url} 
-              target="_blank" 
-              rel="noopener noreferrer" 
+            <a
+              key={profile.name}
+              href={profile.url}
+              target="_blank"
+              rel="noopener noreferrer"
               className={`text-zinc-600 text-2xl transition-all duration-200 hover:scale-110 ${social?.className || ''}`}
             >
               {social?.icon}
@@ -196,25 +227,25 @@ const Header = ({ basics }: { basics: Basics }) => {
       <p className="text-zinc-700 my-6 font-lato font-normal">{basics.description}</p>
       <div className="text-zinc-600 font-lato font-normal space-y-1">
         <div className="contact-item flex items-center group relative">
-          <FiCopy 
+          <FiCopy
             className={`copy-icon cursor-pointer text-sm hidden md:block absolute -left-6 ${emailCopied ? 'text-green-500 opacity-100' : ''}`}
             onClick={() => copyToClipboard(basics.email, 'email')}
             title="Copy email"
           />
-          <a 
-            href={`mailto:${basics.email}`} 
+          <a
+            href={`mailto:${basics.email}`}
             className="contact-email transition-colors duration-200"
           >
             {basics.email}
           </a>
-          <FiCopy 
+          <FiCopy
             className={`cursor-pointer text-sm ml-2 md:hidden ${emailCopied ? 'text-green-500' : ''}`}
             onClick={() => copyToClipboard(basics.email, 'email')}
             title="Copy email"
           />
         </div>
         <div className="contact-item flex items-center group relative">
-          <FiCopy 
+          <FiCopy
             className={`copy-icon cursor-pointer text-sm hidden md:block absolute -left-6 ${phoneCopied ? 'text-green-500 opacity-100' : ''}`}
             onClick={() => copyToClipboard(basics.phone, 'phone')}
             title="Copy phone"
@@ -222,7 +253,7 @@ const Header = ({ basics }: { basics: Basics }) => {
           <span className="contact-phone transition-colors duration-200 cursor-default">
             {basics.phone}
           </span>
-          <FiCopy 
+          <FiCopy
             className={`cursor-pointer text-sm ml-2 md:hidden ${phoneCopied ? 'text-green-500' : ''}`}
             onClick={() => copyToClipboard(basics.phone, 'phone')}
             title="Copy phone"

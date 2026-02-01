@@ -20,7 +20,7 @@ export default function Home() {
         {resume.sections?.internships?.enabled && <Internships internships={resume.internships} />}
         <Leadership leadership={resume.leadership} />
       </div>
-      
+
       {/* Desktop layout: 3 columns with sidebar */}
       <div className="hidden md:grid md:grid-cols-3 gap-8">
         <aside className="md:col-span-1 space-y-8">
