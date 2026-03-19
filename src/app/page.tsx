@@ -1,6 +1,7 @@
 'use client';
 import { useState, useEffect } from 'react';
 import localResume from '../../data/resume.json';
+import appConfig from '../../config.json';
 import Header from '../components/Header';
 import Education from '../components/Education';
 import Work from '../components/Work';
@@ -8,28 +9,68 @@ import Projects from '../components/Projects';
 import Skills from '../components/Skills';
 import Internships from '../components/Internships';
 import Leadership from '../components/Leadership';
+import { Resume } from '../types';
 
-const GIST_URL = 'https://gist.githubusercontent.com/deoxilix/db7ce1bd1fc1f4ad7dc3f9be6f5be86d/raw/rsm.json';
+type ResumeSource = 'local' | 'remote';
+type RuntimeEnv = 'development' | 'production' | 'test';
+
+interface SourceConfig {
+  source: ResumeSource;
+  path: string;
+}
+
+interface AppConfig {
+  development: SourceConfig;
+  production: SourceConfig;
+  test?: SourceConfig;
+}
+
+type ResumeWithConfig = Resume & {
+  disabled?: boolean;
+  sections?: {
+    internships?: {
+      enabled?: boolean;
+    };
+  };
+};
+
+const typedLocalResume = localResume as ResumeWithConfig;
+const typedAppConfig = appConfig as AppConfig;
+const runtimeEnv = (process.env.NODE_ENV as RuntimeEnv | undefined) ?? 'development';
+const activeConfig: SourceConfig = typedAppConfig[runtimeEnv] ?? typedAppConfig.development;
 
 export default function Home() {
-  const [resume, setResume] = useState<any>(null);
+  const [resume, setResume] = useState<ResumeWithConfig | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    if (activeConfig.source === 'local') {
+      setResume(typedLocalResume);
+      setLoading(false);
+      return;
+    }
+
+    if (!activeConfig.path) {
+      console.warn('Remote resume source selected without a path. Falling back to local resume.');
+      setResume(typedLocalResume);
+      setLoading(false);
+      return;
+    }
+
     const fetchResume = async () => {
       try {
-        const response = await fetch(GIST_URL);
-        const data = await response.json();
+        const response = await fetch(activeConfig.path);
+        const data = (await response.json()) as ResumeWithConfig;
 
         // Check if gist is disabled, or use gist data if enabled
         if (data.disabled === false) {
           setResume(data);
         } else {
-          setResume(localResume);
+          setResume(typedLocalResume);
         }
       } catch (error) {
         console.error('Failed to fetch resume from gist, using local data:', error);
-        setResume(localResume);
+        setResume(typedLocalResume);
       } finally {
         setLoading(false);
       }

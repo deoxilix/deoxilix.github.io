@@ -116,17 +116,31 @@
   ],
   "projects": [
     {
+      "name": "Orb - Multi-Agent LLM Orchestration Framework",
+      "summary": "Collaborated on a Python framework where multiple LLM agents collaborate over an async message bus to solve complex tasks. Designed configurable agent topologies (like triad, research-&-build, dual-review) defined via YAML, with dynamic model selection across local and cloud tiers. Includes a TUI, real-time WebSocket dashboard, and a CLI daemon mode.",
+      "source": "https://github.com/sladebot/orb",
+      "disabled": false
+    },
+    {
       "name": "Build a C Compiler",
-      "summary": "Implementing lexical analysis, parsing, semantic checks, and code generation in Python with modular, testable components."
+      "summary": "Implementing lexical analysis, parsing, semantic checks, and code generation in Python with modular, testable components.",
+      "disabled": true
     },
     {
       "name": "Heuristic Search Algorithm for CRISPR guide RNA Safety Analysis",
-      "summary": "Implementing a heuristic search algorithm (A*) in Python to predict and rank potential CRISPR-Cas9 off-target sites in genes by calculating Hamming distance, addressing a key safety challenge for therapeutic gene editing."
+      "summary": "Implementing a heuristic search algorithm (A*) in Python to predict and rank potential CRISPR-Cas9 off-target sites in genes by calculating Hamming distance, addressing a key safety challenge for therapeutic gene editing.",
+      "disabled": false
+    },
+    {
+      "name": "CRISPR-Cas9 Off-target Prediction using Machine Learning",
+      "summary": "Developed a machine learning model in Python to predict CRISPR-Cas9 off-target effects, achieving 85% accuracy by analyzing genomic sequences and features, contributing to safer gene editing applications.",
+      "disabled": true
     },
     {
       "name": "Lisp interpreter in Ruby",
       "summary": "Developed an interpreter, parser, and code generation for Lisp in Ruby.",
-      "source": "https://github.com/deoxilix/ruspy"
+      "source": "https://github.com/deoxilix/ruspy",
+      "disabled": false
     }
   ],
   "sections": {
@@ -137,7 +151,7 @@
   "skills": {
     "languages": ["Python", "Clojure", "Javascript", "Typescript", "C", "SQL", "Ruby"],
     "frameworks": ["ReactJS", "NodeJS", "Ruby on Rails"],
-    "ml_ai": ["PyTorch", "NumPy", "Pandas", "Scikit-learn"],
+    "ml_ai": ["PyTorch", "NumPy", "Pandas", "Scikit-learn", "LLM Orchestration", "RAG", "GraphRAG", "Reinforcement Learning"],
     "tools": ["Docker", "Kubernetes", "Git", "AWS", "PostgreSQL", "Redis", "Elastic Search"],
     "methodologies": ["Object oriented programming", "Test Driven Development", "Agile"]
   },

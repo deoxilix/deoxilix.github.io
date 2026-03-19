@@ -53,6 +53,7 @@ export interface Project {
   tech?: string;
   source?: string;
   url?: string;
+  disabled?: boolean;
 }
 
 export interface Skills {

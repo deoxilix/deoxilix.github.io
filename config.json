@@ -1,0 +1,14 @@
+{
+  "development": {
+    "source": "local",
+    "path": ""
+  },
+  "production": {
+    "source": "remote",
+    "path": "https://gist.githubusercontent.com/deoxilix/db7ce1bd1fc1f4ad7dc3f9be6f5be86d/raw/rsm.json"
+  },
+  "test": {
+    "source": "local",
+    "path": ""
+  }
+}
