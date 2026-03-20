@@ -1,4 +1,7 @@
 {
+  "ui": {
+    "contentZoomPercent": 85
+  },
   "development": {
     "source": "local",
     "path": ""

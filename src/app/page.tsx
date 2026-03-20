@@ -20,7 +20,12 @@ interface SourceConfig {
   path: string;
 }
 
+interface UiConfig {
+  contentZoomPercent?: number;
+}
+
 interface AppConfig {
+  ui?: UiConfig;
   development: SourceConfig;
   production: SourceConfig;
   test?: SourceConfig;
@@ -39,6 +44,10 @@ const typedLocalResume = localResume as ResumeWithConfig;
 const typedAppConfig = appConfig as AppConfig;
 const runtimeEnv = (process.env.NODE_ENV as RuntimeEnv | undefined) ?? 'development';
 const activeConfig: SourceConfig = typedAppConfig[runtimeEnv] ?? typedAppConfig.development;
+const configuredZoomPercent = typedAppConfig.ui?.contentZoomPercent ?? 100;
+const clampedZoomPercent = Math.min(100, Math.max(70, configuredZoomPercent));
+const contentScale = clampedZoomPercent / 100;
+const imageScaleCompensation = 1 / contentScale;
 
 export default function Home() {
   const [resume, setResume] = useState<ResumeWithConfig | null>(null);
@@ -181,47 +190,59 @@ export default function Home() {
     <div className="container mx-auto p-4 md:p-8">
       <SectionMinimap items={minimapItems} />
 
-      {/* Mobile layout: single column with specific order */}
-      <div className="md:hidden space-y-8">
-        <Header basics={resume.basics} />
-        <Education education={resume.education} />
-        <Work work={resume.work} />
-        <Skills skills={resume.skills} />
-        <Projects projects={resume.projects} />
-        {resume.sections?.internships?.enabled && <Internships internships={resume.internships} />}
-        <Leadership leadership={resume.leadership} />
-      </div>
+      <div
+        style={
+          contentScale === 1
+            ? undefined
+            : {
+                transform: `scale(${contentScale})`,
+                transformOrigin: 'top left',
+                width: `${100 / contentScale}%`,
+              }
+        }
+      >
+        {/* Mobile layout: single column with specific order */}
+        <div className="md:hidden space-y-8">
+          <Header basics={resume.basics} imageScaleCompensation={imageScaleCompensation} />
+          <Education education={resume.education} />
+          <Work work={resume.work} />
+          <Skills skills={resume.skills} />
+          <Projects projects={resume.projects} />
+          {resume.sections?.internships?.enabled && <Internships internships={resume.internships} />}
+          <Leadership leadership={resume.leadership} />
+        </div>
 
-      {/* Desktop layout: 3 columns with sidebar */}
-      <div className="hidden md:grid md:grid-cols-3 gap-8">
-        <aside className="md:col-span-1 space-y-8">
-          <section id="top" className="scroll-mt-6">
-            <Header basics={resume.basics} />
-          </section>
-          <section id="skills" className="scroll-mt-6">
-            <Skills skills={resume.skills} />
-          </section>
-        </aside>
-        <main className="md:col-span-2 space-y-8">
-          <section id="education" className="scroll-mt-6">
-            <Education education={resume.education} />
-          </section>
-          <section id="work" className="scroll-mt-6">
-            <Work work={resume.work} />
-          </section>
-          <section id="projects" className="scroll-mt-6">
-            <Projects projects={resume.projects} />
-          </section>
-          {resume.sections?.internships?.enabled && (
-            <section id="internships" className="scroll-mt-6">
-              <Internships internships={resume.internships} />
+        {/* Desktop layout: 3 columns with sidebar */}
+        <div className="hidden md:grid md:grid-cols-3 gap-8">
+          <aside className="md:col-span-1 space-y-8">
+            <section id="top" className="scroll-mt-6">
+              <Header basics={resume.basics} imageScaleCompensation={imageScaleCompensation} />
             </section>
-          )}
-          <section id="leadership" className="scroll-mt-6">
-            <Leadership leadership={resume.leadership} />
-          </section>
-          <div id="bottom" className="scroll-mt-6" />
-        </main>
+            <section id="skills" className="scroll-mt-6">
+              <Skills skills={resume.skills} />
+            </section>
+          </aside>
+          <main className="md:col-span-2 space-y-8">
+            <section id="education" className="scroll-mt-6">
+              <Education education={resume.education} />
+            </section>
+            <section id="work" className="scroll-mt-6">
+              <Work work={resume.work} />
+            </section>
+            <section id="projects" className="scroll-mt-6">
+              <Projects projects={resume.projects} />
+            </section>
+            {resume.sections?.internships?.enabled && (
+              <section id="internships" className="scroll-mt-6">
+                <Internships internships={resume.internships} />
+              </section>
+            )}
+            <section id="leadership" className="scroll-mt-6">
+              <Leadership leadership={resume.leadership} />
+            </section>
+            <div id="bottom" className="scroll-mt-6" />
+          </main>
+        </div>
       </div>
     </div>
   );

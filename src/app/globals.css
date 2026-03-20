@@ -101,11 +101,7 @@ html {
 
 /* Minimap link colors are isolated to avoid conflicts with global dark text overrides */
 .minimap-link {
-  color: #3f3f46;
-}
-
-.dark .minimap-link {
-  color: #d4d4d8;
+  color: #808080;
 }
 
 .minimap-link:hover {

@@ -15,7 +15,14 @@ const socialIcons = {
   instagram: { icon: <FiInstagram />, className: 'social-instagram' },
 };
 
-const Header = ({ basics }: { basics: Basics }) => {
+const Header = ({
+  basics,
+  imageScaleCompensation = 1,
+}: {
+  basics: Basics;
+  imageScaleCompensation?: number;
+}) => {
+  const profileImageSize = Math.round(120 * imageScaleCompensation);
   const nameParts = basics.name.split(' ');
   const [copyStates, setCopyStates] = useState<Record<string, CopyAnimationState>>({});
   const [menuOpen, setMenuOpen] = useState(false);
@@ -174,12 +181,15 @@ const Header = ({ basics }: { basics: Basics }) => {
             {menuContent}
           </div>
           {/* Profile Image */}
-          <div className="w-[120px] h-[120px] rounded-xl overflow-hidden">
+          <div
+            className="rounded-xl overflow-hidden"
+            style={{ width: profileImageSize, height: profileImageSize }}
+          >
             <Image
               src="/photo-chitown.jpeg"
               alt={basics.name}
-              width={120}
-              height={120}
+              width={profileImageSize}
+              height={profileImageSize}
               className="w-full h-full object-cover object-center"
             />
           </div>
