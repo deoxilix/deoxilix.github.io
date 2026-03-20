@@ -3,7 +3,7 @@
 export interface Basics {
   name: string;
   description: string;
-  email: string;
+  email: string | string[];
   phone: string;
   location: string;
   website: string;

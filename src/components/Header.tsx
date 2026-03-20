@@ -6,6 +6,8 @@ import { FaGithub, FaLinkedin, FaFacebook } from 'react-icons/fa';
 import { FiInstagram, FiCopy, FiDownload, FiMenu, FiMoon, FiSun, FiShare2, FiX, FiCheck, FiClipboard } from 'react-icons/fi';
 import { Basics } from '../types';
 
+type CopyAnimationState = 'idle' | 'clipboard' | 'check';
+
 const socialIcons = {
   github: { icon: <FaGithub />, className: 'social-github' },
   linkedin: { icon: <FaLinkedin />, className: 'social-linkedin' },
@@ -15,23 +17,27 @@ const socialIcons = {
 
 const Header = ({ basics }: { basics: Basics }) => {
   const nameParts = basics.name.split(' ');
-  const [emailCopied, setEmailCopied] = useState(false);
-  const [phoneCopied, setPhoneCopied] = useState(false);
+  const [copyStates, setCopyStates] = useState<Record<string, CopyAnimationState>>({});
   const [menuOpen, setMenuOpen] = useState(false);
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState(() => {
+    if (typeof window === 'undefined') {
+      return false;
+    }
+
+    const savedMode = localStorage.getItem('darkMode');
+    return savedMode ? savedMode === 'true' : false;
+  });
   const [shareState, setShareState] = useState<'idle' | 'clipboard' | 'check'>('idle');
   const [githubHover, setGithubHover] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const copyAnimationTimeouts = useRef<Record<string, ReturnType<typeof setTimeout>[]>>({});
+  const emails = Array.isArray(basics.email) ? basics.email : [basics.email];
 
   useEffect(() => {
-    // Check for saved preference or system preference
-    const savedMode = localStorage.getItem('darkMode');
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    const isDark = savedMode ? savedMode === 'true' : prefersDark;
-    setDarkMode(isDark);
-    document.documentElement.classList.toggle('dark', isDark);
-  }, []);
+    document.documentElement.classList.toggle('dark', darkMode);
+    localStorage.setItem('darkMode', String(darkMode));
+  }, [darkMode]);
 
   // Handle click outside and timeout
   useEffect(() => {
@@ -60,10 +66,7 @@ const Header = ({ basics }: { basics: Basics }) => {
   }, [menuOpen]);
 
   const toggleDarkMode = () => {
-    const newMode = !darkMode;
-    setDarkMode(newMode);
-    document.documentElement.classList.toggle('dark', newMode);
-    localStorage.setItem('darkMode', String(newMode));
+    setDarkMode((prevMode) => !prevMode);
   };
 
   const handleShare = async () => {
@@ -79,16 +82,24 @@ const Header = ({ basics }: { basics: Basics }) => {
     }
   };
 
-  const copyToClipboard = async (text: string, type: 'email' | 'phone') => {
+  const copyToClipboard = async (text: string, key: string) => {
     try {
       await navigator.clipboard.writeText(text);
-      if (type === 'email') {
-        setEmailCopied(true);
-        setTimeout(() => setEmailCopied(false), 2000);
-      } else {
-        setPhoneCopied(true);
-        setTimeout(() => setPhoneCopied(false), 2000);
-      }
+
+      const existingTimeouts = copyAnimationTimeouts.current[key] || [];
+      existingTimeouts.forEach((id) => clearTimeout(id));
+
+      setCopyStates((prev) => ({ ...prev, [key]: 'clipboard' }));
+
+      const checkTimeout = setTimeout(() => {
+        setCopyStates((prev) => ({ ...prev, [key]: 'check' }));
+      }, 250);
+
+      const resetTimeout = setTimeout(() => {
+        setCopyStates((prev) => ({ ...prev, [key]: 'idle' }));
+      }, 1700);
+
+      copyAnimationTimeouts.current[key] = [checkTimeout, resetTimeout];
     } catch (err) {
       console.error('Failed to copy:', err);
     }
@@ -120,7 +131,7 @@ const Header = ({ basics }: { basics: Basics }) => {
           {darkMode ? <FiSun className="text-xl" /> : <FiMoon className="text-xl" />}
         </button>
         <a
-          href="/Rajarshi-Sen-Resume-Jan-2026-int.pdf"
+          href="/Rajarshi-Sen-Resume-Mar-2026-int.pdf"
           download
           className="hover:scale-110 transition-all duration-200 p-1"
           style={{ color: darkMode ? '#71717a' : '#71717a' }}
@@ -226,38 +237,47 @@ const Header = ({ basics }: { basics: Basics }) => {
       </div>
       <p className="text-zinc-700 my-6 font-lato font-normal">{basics.description}</p>
       <div className="text-zinc-600 font-lato font-normal space-y-1">
-        <div className="contact-item flex items-center group relative">
-          <FiCopy
-            className={`copy-icon cursor-pointer text-sm hidden md:block absolute -left-6 ${emailCopied ? 'text-green-500 opacity-100' : ''}`}
-            onClick={() => copyToClipboard(basics.email, 'email')}
-            title="Copy email"
-          />
-          <a
-            href={`mailto:${basics.email}`}
-            className="contact-email transition-colors duration-200"
-          >
-            {basics.email}
-          </a>
-          <FiCopy
-            className={`cursor-pointer text-sm ml-2 md:hidden ${emailCopied ? 'text-green-500' : ''}`}
-            onClick={() => copyToClipboard(basics.email, 'email')}
-            title="Copy email"
-          />
-        </div>
-        <div className="contact-item flex items-center group relative">
-          <FiCopy
-            className={`copy-icon cursor-pointer text-sm hidden md:block absolute -left-6 ${phoneCopied ? 'text-green-500 opacity-100' : ''}`}
-            onClick={() => copyToClipboard(basics.phone, 'phone')}
-            title="Copy phone"
-          />
+        {emails.map((email) => (
+          <div key={email} className="contact-item flex items-center gap-1 w-fit group">
+            <a
+              href={`mailto:${email}`}
+              className="contact-email transition-colors duration-200"
+            >
+              {email}
+            </a>
+
+            <button
+              onClick={() => copyToClipboard(email, `email:${email}`)}
+              className="cursor-pointer text-sm p-1 text-zinc-500 hover:text-zinc-700 transition-all duration-200 opacity-100 md:opacity-0 md:group-hover:opacity-100 pointer-events-auto md:pointer-events-none md:group-hover:pointer-events-auto"
+              title="Copy email"
+              type="button"
+            >
+              <div className="relative w-4 h-4">
+                <FiCopy className={`absolute inset-0 transition-all duration-300 ${!copyStates[`email:${email}`] || copyStates[`email:${email}`] === 'idle' ? 'opacity-100 scale-100' : 'opacity-0 scale-50'}`} />
+                <FiClipboard className={`absolute inset-0 transition-all duration-300 ${copyStates[`email:${email}`] === 'clipboard' ? 'opacity-100 scale-100' : 'opacity-0 scale-50'}`} />
+                <FiCheck className={`absolute inset-0 transition-all duration-300 ${copyStates[`email:${email}`] === 'check' ? 'opacity-100 scale-100 text-green-500' : 'opacity-0 scale-50'}`} />
+              </div>
+            </button>
+          </div>
+        ))}
+
+        <div className="contact-item flex items-center gap-1 w-fit group">
           <span className="contact-phone transition-colors duration-200 cursor-default">
             {basics.phone}
           </span>
-          <FiCopy
-            className={`cursor-pointer text-sm ml-2 md:hidden ${phoneCopied ? 'text-green-500' : ''}`}
-            onClick={() => copyToClipboard(basics.phone, 'phone')}
+
+          <button
+            onClick={() => copyToClipboard(basics.phone, `phone:${basics.phone}`)}
+            className="cursor-pointer text-sm p-1 text-zinc-500 hover:text-zinc-700 transition-all duration-200 opacity-100 md:opacity-0 md:group-hover:opacity-100 pointer-events-auto md:pointer-events-none md:group-hover:pointer-events-auto"
             title="Copy phone"
-          />
+            type="button"
+          >
+            <div className="relative w-4 h-4">
+              <FiCopy className={`absolute inset-0 transition-all duration-300 ${!copyStates[`phone:${basics.phone}`] || copyStates[`phone:${basics.phone}`] === 'idle' ? 'opacity-100 scale-100' : 'opacity-0 scale-50'}`} />
+              <FiClipboard className={`absolute inset-0 transition-all duration-300 ${copyStates[`phone:${basics.phone}`] === 'clipboard' ? 'opacity-100 scale-100' : 'opacity-0 scale-50'}`} />
+              <FiCheck className={`absolute inset-0 transition-all duration-300 ${copyStates[`phone:${basics.phone}`] === 'check' ? 'opacity-100 scale-100 text-green-500' : 'opacity-0 scale-50'}`} />
+            </div>
+          </button>
         </div>
       </div>
     </header>

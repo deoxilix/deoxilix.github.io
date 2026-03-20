@@ -1,8 +1,9 @@
 {
+  "disabled": false,
   "basics": {
     "name": "Rajarshi Sen",
-    "description": "I'm a passionate software engineer with a strong foundation in backend systems and a growing interest in Machine Learning. I'm currently pursuing my Masters in Computer Science, focusing on AI and ML. I enjoy building robust and scalable solutions, and I'm always looking for new challenges. In my free time, I'm an enthusiastic photographer.",
-    "email": "senra@iastate.edu",
+    "description": "I build systems that scale and am learning how to make them intelligent. With several years of experience engineering reliable backend services in production, I’m expanding into machine learning and AI through graduate study and hands‑on projects. I’m driven by clean design, practical impact, and continuous learning. When I’m not coding, you’ll usually find me behind a camera, chasing light, landscapes, and interesting moments.",
+    "email": ["senra@iastate.edu", "rsen90@gmail.com"],
     "phone": "(628) 315-9743",
     "location": "Ames, Iowa",
     "website": "https://github.com/deoxilix",
@@ -27,25 +28,26 @@
       "area": "Computer Science",
       "studyType": "Masters",
       "gpa": "3.92",
-      "startDate": "Aug 2027",
+      "startDate": "Aug 2025",
       "endDate": "Present",
       "location": "Ames, IA",
       "courses": [
         "Algorithmic Foundation",
         "Principles of Artificial Intelligence",
         "Principles and Practice of Compiling",
-        "Introduction to Machine Learning",
+        "Machine Learning",
         "Statistical Bioinformatics",
-        "Machine Learning"
+        "Computer Vision & Perception",
+        "HCI"
       ]
     },
     {
-      "institution": "Techno India, WBUT",
-      "area": "Food Technology",
-      "studyType": "B.Tech",
+      "institution": "Techno India Salt Lake, MAKAUT (WBUT)",
+      "area": "Food Science",
+      "studyType": "Bachelor of Technology",
       "startDate": "AUG 2012",
       "endDate": "MAY 2016",
-      "location": "Kolkata, INDIA"
+      "location": "Kolkata, India"
     }
   ],
   "work": [
@@ -120,6 +122,11 @@
       "summary": "Collaborated on a Python framework where multiple LLM agents collaborate over an async message bus to solve complex tasks. Designed configurable agent topologies (like triad, research-&-build, dual-review) defined via YAML, with dynamic model selection across local and cloud tiers. Includes a TUI, real-time WebSocket dashboard, and a CLI daemon mode.",
       "source": "https://github.com/sladebot/orb",
       "disabled": false
+    },
+    {"name": "Gnoma - Autonomous Anti-Aging Intervention Discovery via RL",
+     "summary": "Built a pipeline combining single-cell transcriptomics (61M+ cells), a scVI variational autoencoder, and a hybrid world model (37 causal rules + neural transition model trained on 310k Perturb-seq CRISPR screens) to discover anti-aging interventions. A safety-constrained PPO agent with action masking over 105 interventions independently rediscovered 10/20 top candidates validated in published aging literature, with 102% reward improvement over baseline and zero safety violations.",
+     "source": "https://github.com/deoxilix/gnoma",
+     "disabled": false
     },
     {
       "name": "Build a C Compiler",
