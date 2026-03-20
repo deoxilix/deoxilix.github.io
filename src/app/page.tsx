@@ -9,6 +9,7 @@ import Projects from '../components/Projects';
 import Skills from '../components/Skills';
 import Internships from '../components/Internships';
 import Leadership from '../components/Leadership';
+import SectionMinimap from '../components/SectionMinimap';
 import { Resume } from '../types';
 
 type ResumeSource = 'local' | 'remote';
@@ -165,8 +166,21 @@ export default function Home() {
     );
   }
 
+  const minimapItems = [
+    { label: '↑', href: '#top', ariaLabel: 'Go to top', isArrow: true },
+    { label: 'Skills', href: '#skills' },
+    { label: 'Education', href: '#education' },
+    { label: 'Work', href: '#work' },
+    { label: 'Projects', href: '#projects' },
+    ...(resume.sections?.internships?.enabled ? [{ label: 'Internships', href: '#internships' }] : []),
+    { label: 'Leadership', href: '#leadership' },
+    { label: '↓', href: '#bottom', ariaLabel: 'Go to bottom', isArrow: true },
+  ];
+
   return (
     <div className="container mx-auto p-4 md:p-8">
+      <SectionMinimap items={minimapItems} />
+
       {/* Mobile layout: single column with specific order */}
       <div className="md:hidden space-y-8">
         <Header basics={resume.basics} />
@@ -181,15 +195,32 @@ export default function Home() {
       {/* Desktop layout: 3 columns with sidebar */}
       <div className="hidden md:grid md:grid-cols-3 gap-8">
         <aside className="md:col-span-1 space-y-8">
-          <Header basics={resume.basics} />
-          <Skills skills={resume.skills} />
+          <section id="top" className="scroll-mt-6">
+            <Header basics={resume.basics} />
+          </section>
+          <section id="skills" className="scroll-mt-6">
+            <Skills skills={resume.skills} />
+          </section>
         </aside>
         <main className="md:col-span-2 space-y-8">
-          <Education education={resume.education} />
-          <Work work={resume.work} />
-          <Projects projects={resume.projects} />
-          {resume.sections?.internships?.enabled && <Internships internships={resume.internships} />}
-          <Leadership leadership={resume.leadership} />
+          <section id="education" className="scroll-mt-6">
+            <Education education={resume.education} />
+          </section>
+          <section id="work" className="scroll-mt-6">
+            <Work work={resume.work} />
+          </section>
+          <section id="projects" className="scroll-mt-6">
+            <Projects projects={resume.projects} />
+          </section>
+          {resume.sections?.internships?.enabled && (
+            <section id="internships" className="scroll-mt-6">
+              <Internships internships={resume.internships} />
+            </section>
+          )}
+          <section id="leadership" className="scroll-mt-6">
+            <Leadership leadership={resume.leadership} />
+          </section>
+          <div id="bottom" className="scroll-mt-6" />
         </main>
       </div>
     </div>
