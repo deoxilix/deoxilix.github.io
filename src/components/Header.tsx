@@ -310,6 +310,7 @@ const Header = ({
                 href={profile.url}
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="GitHub profile"
                 className="text-zinc-600 text-2xl transition-all duration-200 social-github inline-block relative"
                 style={{ transform: githubHover ? 'translateY(-8px) scale(1.1)' : 'none' }}
                 onMouseEnter={() => setGithubHover(true)}
@@ -337,6 +338,7 @@ const Header = ({
               href={profile.url}
               target="_blank"
               rel="noopener noreferrer"
+              aria-label={`${profile.name.charAt(0).toUpperCase() + profile.name.slice(1)} profile`}
               className={`text-zinc-600 text-2xl transition-all duration-200 hover:scale-110 ${social?.className || ''}`}
             >
               {social?.icon}
